@@ -29,7 +29,7 @@ export const paramSchema = z.object({
     id:z.string()
 })
 
-export type SignupInput = z.infer<typeof signinInput>
+export type SignupInput = z.infer<typeof signupInput>
 export type SigninInput = z.infer<typeof signinInput>
 export type BlogInput = z.infer<typeof blogInput>
 export type UpdateblogInput = z.infer<typeof updateblogInput>

@@ -4,6 +4,7 @@ import { withAccelerate } from '@prisma/extension-accelerate';
 import { sign, verify } from 'hono/jwt';
 import { zValidator } from '@hono/zod-validator';
 import {signupInput,signinInput,blogInput,updateblogInput,paramSchema} from "@msm_saq/common"
+import { cors } from 'hono/cors';
 
 
 
@@ -18,7 +19,7 @@ const app = new Hono<{
     
   }
 }>()
-
+app.use("/*", cors())
 app.use("*", async (c,next) => {
 	const prisma = new PrismaClient({
       datasourceUrl: c.env.DATABASE_URL,
