@@ -143,12 +143,41 @@ id:id
 
 
 } )
+
+app.get("/api/v1/blog/blogs",async (c)=>{
+  try{
+
+    const prisma = c.get("prisma");
+    const blogs = await prisma.blog.findMany({
+      select:{
+        id:true,
+        title:true,
+        content: true,
+        published: true,
+        author:{select:{
+          name:true
+          }
+        }
+
+      }
+    })
+    return c.json({
+      blogs:blogs
+    })
+  }catch(e){
+    c.status(400)
+    return c.json({
+      error:"Error while fetchin"
+    })
+  }
+})
 app.get("api/v1/blog/:id",zValidator("param",paramSchema 
 ),async(c) => {
   try{
 
     const {id} =  c.req.valid("param")
     const prisma = c.get("prisma")
+    
     const blog = await prisma.blog.findFirst({
       where:{
         id : id
@@ -164,13 +193,6 @@ app.get("api/v1/blog/:id",zValidator("param",paramSchema
 
 } )
 
-app.get("/api/v1/blog/bulk", async (c) =>{
-  const prisma = c.get("prisma")
-  const blogs = await prisma.blog.findMany();
-  return c.json({
-    blogs:blogs
-  })
-})
 
 export default app
 
