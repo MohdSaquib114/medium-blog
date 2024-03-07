@@ -10,7 +10,7 @@ import { useBlogs } from '../hooks'
         Loading....
     </div>
    }else{
-    console.log(blogs)
+  
    return (
     <div>
 <Appbar />

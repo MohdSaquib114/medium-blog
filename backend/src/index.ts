@@ -181,8 +181,19 @@ app.get("api/v1/blog/:id",zValidator("param",paramSchema
     const blog = await prisma.blog.findFirst({
       where:{
         id : id
+      },
+      select:{
+        id:true,
+        title:true,
+        content:true,
+        author :{
+          select:{
+            name:true
+          }
+        }
       }
     })
+    console.log(blog)
     return c.json({
       blog:blog
     })
