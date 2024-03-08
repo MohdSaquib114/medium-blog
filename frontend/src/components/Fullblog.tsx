@@ -4,7 +4,7 @@ import Appbar from "./Appbar"
 import Avatar from "./Avatar"
 
 
-export default function Fullblog({blog}:{blog:BlogType}) {
+export default function xFullblog({blog}:{blog:BlogType}) {
   return (
     <div>
 <Appbar />
