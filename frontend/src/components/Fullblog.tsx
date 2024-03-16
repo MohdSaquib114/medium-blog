@@ -13,13 +13,13 @@ export default function xFullblog({blog}:{blog:BlogType}) {
     <div className="lg:grid gap-5 grid-col-12 px-5 pt-20 w-full max-w-screen-2xl "> 
       <div className="col-start-1 col-end-5 border-b pb-8 lg:border-none lg:pb-0">
         <div className="text-3xl lg:text-5xl font-extrabold">
-            {blog.title}
+            {blog?.title}
         </div>
         <div className="text-slate-500 font-medium pt-8">
             Posted on 23rd Dec
         </div>
         <div className="text-slate-600 font-semibold pt-4 lg:text-lg">
-            {blog.content}
+            {blog?.content}
         </div>
       </div>
       <div className="col-start-7  mt-10 lg:mt-0">
@@ -27,7 +27,7 @@ export default function xFullblog({blog}:{blog:BlogType}) {
       
     <div className="flex gap-4">
         <div className=" self-center">
-            <Avatar name={blog.author.name} />
+            <Avatar name={blog?.author.name} />
         </div>
         <div>
 

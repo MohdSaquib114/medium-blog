@@ -32,7 +32,7 @@ export default function Auth({type}:{type:"signup" | "signin"}) {
      
        navigate("/blogs")
         }catch(e:unknown){
-         notify(e.message)
+         notify("An error occured")
         }
     }
   return (

@@ -3,7 +3,7 @@ import axios from "axios"
 import { BACKEND_URL } from "../config"
  
 type LoadingType =boolean
-export interface BlogType {
+export type BlogType ={
     
     id: string,
     title: string,
@@ -17,7 +17,15 @@ export interface BlogType {
 export const useBlog =({id}:{id:string|undefined}) => {
 
         const [loading,setLoading] = useState<LoadingType>(true)
-        const [blog,setBlog] = useState<BlogType>()
+        const [blog,setBlog] = useState<BlogType>({
+          id: "",
+          title: "",
+          content: "",
+          published: false,
+          author: {
+              name: ""
+          }
+        })
      
         useEffect(()=>{
       
@@ -31,7 +39,7 @@ export const useBlog =({id}:{id:string|undefined}) => {
             setLoading(false)
           })
     
-        },[])
+        },[id])
     
         return {
             loading,

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function Publish() {
   const [title,setTitle] = useState("")
   const [content,setContent] = useState("")
-  const [laoding,setLoading] = useState(true)
+  // const [laoding,setLoading] = useState(true)
   const navigate = useNavigate()
   const toaster = (mes:string) => toast(mes)
   async function postHandler(){
@@ -29,7 +29,7 @@ export default function Publish() {
      if(res.status === 200) toaster("blog posted")
     navigate(`/blog/${res.data.id}`)
     }catch(e){
-  toaster(e.message)
+  toaster("Error occured")
      }
   }
   return (
@@ -57,7 +57,7 @@ export default function Publish() {
   )
 }
 
-function  TextEditor({onChange}:{onChange: React.ChangeEventHandler,}){
+function  TextEditor({onChange}:{onChange:(e:React.ChangeEvent<HTMLTextAreaElement>)=>void,}){
   return <form className="">
       <div className="text-xl font-semibold text-slate-600">Content</div>
   <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50">
